@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Position Page</title>
+</head>
+<body>
+
+<h2>User Position</h2>
+
+<form th:action="@{/getPosition}" method="get">
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" name="name" required/>
+    <button type="submit">Get Position</button>
+</form>
+
+<div th:if="${positionList != null and not #lists.isEmpty(positionList)}">
+    <h3>User Positions:</h3>
+    <ul>
+        <li th:each="positionDTO : ${positionList}">
+            <span th:text="${positionDTO.contact}"></span>
+            <span th:text="${positionDTO.email}"></span>
+            <span th:text="${positionDTO.category}"></span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
